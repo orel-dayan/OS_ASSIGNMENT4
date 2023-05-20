@@ -3,7 +3,6 @@ CC = gcc
 
 all: reactor server 
 
-
 server: reactor_server.c reactor_server.h
 	$(CC) -o react_server reactor_server.c -L. ./st_reactor.so -lpthread 
 

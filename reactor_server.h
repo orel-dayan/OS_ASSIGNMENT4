@@ -18,7 +18,7 @@
 
 #define PORT "9034" // beej's guide port
 #define MAX_CLIENTS 8000 // max number of clients
-#define BUFFER 256
+#define BUFFER 256  
 
 void signalHandler(int);
 void *get_in_addr(struct sockaddr *);
