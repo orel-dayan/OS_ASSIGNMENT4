@@ -21,7 +21,7 @@ NOTES:
 - The beej program have errors in vscode but it works (it is very strange)
 - For the client we used the telnet and nc commands : nc 127.0.0.1 9034 / telnet 127.0.0.1 9034
 - libary is not thread safe.
-- The server can listen to 8000 clients at the same time.
+- The server can listen to 1024*8 clients at the same time.
 can be changed in the code in the macro MAX_CLIENTS.
 - There are run examples in the docs directory .
 

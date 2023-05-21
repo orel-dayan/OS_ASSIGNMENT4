@@ -17,7 +17,7 @@
 #include "reactor.h"
 
 #define PORT "9034" // beej's guide port
-#define MAX_CLIENTS 8000 // max number of clients
+#define MAX_CLIENTS 1024*8
 #define BUFFER 256  
 
 void signalHandler(int);
