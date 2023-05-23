@@ -5,6 +5,7 @@
 #include <pthread.h>
 
 typedef struct st_reactor *p_reactor_t;
+
 /**
  * @brief Struct handler_t is a handler struct that contains a handler function pointer and an argument.
  * The handler function pointer is a function pointer to a handler function.
@@ -41,14 +42,14 @@ typedef struct st_reactor
     pthread_t thread; // reactor thread. mutex to make it thread safe
 } reactor_t, *p_reactor_t;
 
-p_reactor_t createReactor(int, int);
-void stopReactor(p_reactor_t);
-void startReactor(p_reactor_t);
-void *runReactor(void *);
-void addFd(p_reactor_t, int, handler_t);
-void waitFor(p_reactor_t);
-void deleteReactor(p_reactor_t); // free memory and stop reactor
-void deleteFd(p_reactor_t, int); // delete fd from reactor
-int findFd(p_reactor_t, int);    // return fd index in reactor
+p_reactor_t createReactor(int, int);     // create reactor
+void stopReactor(p_reactor_t);           // stop reactor
+void startReactor(p_reactor_t);          // start reactor
+void *runReactor(void *);                // run reactor
+void addFd(p_reactor_t, int, handler_t); // add fd to reactor
+void waitFor(p_reactor_t);               // wait for reactor to stop
+void deleteReactor(p_reactor_t);         // free memory and stop reactor
+void deleteFd(p_reactor_t, int);         // delete fd from reactor
+int findFdIndex(p_reactor_t, int);       // return fd index in reactor
 
 #endif // ST_REACTOR_H

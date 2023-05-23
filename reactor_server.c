@@ -6,8 +6,8 @@ p_reactor_t p_reactor;
 int main(void)
 {
 	// set signal handler
-	signal(SIGINT, signalHandler);
-	signal(SIGTERM, signalHandler);
+	signal(SIGINT, signalHandler); 								// set the signal handler for SIGINT (Ctrl-C)
+	signal(SIGTERM, signalHandler); 							// set the signal handler for SIGTERM (kill) 
 	int listener;												// Listening socket descriptor
 	int new_fd;													// new accepted socket descriptor
 	struct sockaddr_storage remoteaddr; // Client address
@@ -46,10 +46,10 @@ int main(void)
 // signal handler
 void signalHandler(int signal)
 {
-	if (signal == SIGINT || signal == SIGTERM)
+	if (signal == SIGINT || signal == SIGTERM) // if signal is SIGINT or SIGTERM
 	{
-		deleteReactor(p_reactor);
-		exit(EXIT_SUCCESS);
+		deleteReactor(p_reactor); // delete the reactor
+		exit(EXIT_SUCCESS); 			// exit the program
 	}
 }
 
@@ -65,7 +65,7 @@ void *get_in_addr(struct sockaddr *sa)
 }
 
 // from Beej's Guide to Network Programming
-int getListenerSocket(void)
+int getListenerSocket(void) 
 {
 	int listener; // Listening socket descriptor
 	int yes = 1;	// For setsockopt() SO_REUSEADDR, below
@@ -120,7 +120,7 @@ int getListenerSocket(void)
 	return listener;
 }
 
-void connectHandler(p_reactor_t reactor, void *arg)
+void connectHandler(p_reactor_t reactor, void *arg) 
 {
 	struct sockaddr_storage remote_addr; // Client address
 	socklen_t addr_len;
@@ -147,7 +147,7 @@ void connectHandler(p_reactor_t reactor, void *arg)
 		addFd(reactor, new_fd, cHandler);
 	}
 }
-void clientHandler(p_reactor_t reactor, int client_fd, void *arg)
+void clientHandler(p_reactor_t reactor, int client_fd, void *arg) 
 {
 	char buf[BUFFER] = {0};
 	int nbytes;

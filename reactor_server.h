@@ -17,8 +17,8 @@
 #include "reactor.h"
 
 #define PORT "9034" // beej's guide port
-#define MAX_CLIENTS 1024*8
-#define BUFFER 256  
+#define MAX_CLIENTS 1024*8 // max number of clients
+#define BUFFER 256   // max buffer size
 
 void signalHandler(int);
 void *get_in_addr(struct sockaddr *);
