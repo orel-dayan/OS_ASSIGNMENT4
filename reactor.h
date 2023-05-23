@@ -15,8 +15,8 @@ typedef struct st_reactor *p_reactor_t;
 
 typedef struct
 {
-    void (*handler)(p_reactor_t reactor, int fd, void *arg);
-    void *arg;
+	void (*handler)(p_reactor_t reactor, int fd, void *arg);
+	void *arg;
 } handler_t, *p_handler_t;
 
 /**
@@ -33,23 +33,23 @@ typedef struct
 
 typedef struct st_reactor
 {
-    p_handler_t *handlers; // handler array
-    struct pollfd *fds;    // fd array
-    int counter;
-    int size;         // array size
-    int isRunning;    // reactor status
-    int listenFD;     // listener fd
-    pthread_t thread; // reactor thread. mutex to make it thread safe
+	p_handler_t *handlers; // handler array
+	struct pollfd *fds;	   // fd array
+	int counter;
+	int size;		  // array size
+	int isRunning;	  // reactor status
+	int listenFD;	  // listener fd
+	pthread_t thread; // reactor thread. mutex to make it thread safe
 } reactor_t, *p_reactor_t;
 
-p_reactor_t createReactor(int, int);     // create reactor
-void stopReactor(p_reactor_t);           // stop reactor
-void startReactor(p_reactor_t);          // start reactor
-void *runReactor(void *);                // run reactor
+p_reactor_t createReactor(int, int);	 // create reactor
+void stopReactor(p_reactor_t);			 // stop reactor
+void startReactor(p_reactor_t);			 // start reactor
+void *runReactor(void *);				 // run reactor
 void addFd(p_reactor_t, int, handler_t); // add fd to reactor
-void waitFor(p_reactor_t);               // wait for reactor to stop
-void deleteReactor(p_reactor_t);         // free memory and stop reactor
-void deleteFd(p_reactor_t, int);         // delete fd from reactor
-int findFdIndex(p_reactor_t, int);       // return fd index in reactor
+void waitFor(p_reactor_t);				 // wait for reactor to stop
+void deleteReactor(p_reactor_t);		 // free memory and stop reactor
+void deleteFd(p_reactor_t, int);		 // delete fd from reactor
+int findFdIndex(p_reactor_t, int);		 // return fd index in reactor
 
 #endif // ST_REACTOR_H
