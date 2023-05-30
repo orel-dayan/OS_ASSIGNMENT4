@@ -13,7 +13,6 @@
 #include <signal.h>
 #include <netdb.h>
 
-
 #include "reactor.h"
 
 #define PORT "9034" // beej's guide port

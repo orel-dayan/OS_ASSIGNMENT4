@@ -29,14 +29,14 @@ The project is demonstration of a server that uses the Reactor design pattern to
 - libary is not thread safe.
 - The server  can listen to 1024*8 clients at the same time . can be changed in the code in the macro MAX_CLIENTS.
 - There are run examples in the docs directory .
-
+- gnome_terminal_script.sh is create 100 clients and run them in the same time.
 
 
 ## **Run:**
 
 
 ```sh
-  
+
   make all
   ./react_server
    ```

@@ -17,7 +17,7 @@ void startReactor(p_reactor_t reactor)
 {
     if (reactor != NULL) // if the reactor is not null
     {
-        reactor->isRunning = 1;
+        reactor->isRunning = 1; // set the isRunning to 1
         pthread_create(&reactor->thread, NULL, runReactor, reactor);
     }
 }
@@ -48,7 +48,7 @@ void *runReactor(void *arg)
             {
                 if (reactor->fds[i].revents & POLLIN) // if there is data to read
                     reactor->handlers[i]->handler(reactor, reactor->fds[i].fd, reactor->handlers[i]->arg);
-                
+
             }
         }
     }
